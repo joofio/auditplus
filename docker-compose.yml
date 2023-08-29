@@ -1,0 +1,27 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+  biblio_app:
+      image: jfcal/auditplus
+      restart: always
+      environment:
+        DB_USER: api
+        DB_PASSWORD: 123456
+        DB_HOST: bd
+        DB_PORT: 5432
+        DB_NAME: auditcache
+      ports:
+       - "5000:5000"
+
+  bd:
+    image: postgres:15.4
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      -  ./pgdata:/var/lib/postgresql/data 
+    environment:
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: auditcache
+      PGDATA: /var/lib/postgresql/data/pgdata 
