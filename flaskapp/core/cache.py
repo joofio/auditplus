@@ -32,3 +32,6 @@ def insert_into_cache(conn,nummecanografico,resultado,localpicagem,datahora):
     )
     return "ok"
         
+
+def check_action(conn,nummecanografico,resultado,localpicagem,datahora):
+    pass

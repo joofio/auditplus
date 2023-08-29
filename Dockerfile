@@ -38,8 +38,8 @@ COPY run.py /app
 COPY gunicorn.sh /app
 
 RUN apt-get update -y
-RUN apt-get install -y libmariadb-dev
-RUN apt-get install -y gcc
+#RUN apt-get install -y libmariadb-dev
+#RUN apt-get install -y gcc
 
 WORKDIR /app
 RUN pip install -r requirements.txt

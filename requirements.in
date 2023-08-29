@@ -1,0 +1,15 @@
+##Bio==1.5.9
+biopython==1.79
+flasgger==0.9.5
+Flask==2.0.2
+Flask_HTTPAuth==4.5.0
+Flask_SQLAlchemy==2.5.1
+PubChemPy==1.0.4
+python-dotenv==1.0.0
+Requests==2.28.2
+scikit_learn==1.0.1
+spacy==3.2.1
+SQLAlchemy==1.4.28
+transformers==4.14.1
+pymysql
+gunicorn

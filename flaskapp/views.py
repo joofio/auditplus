@@ -4,7 +4,7 @@ from flask import jsonify, request, session
 from sqlalchemy.sql import text
 from sqlalchemy import create_engine
 from flaskapp import app, auth
-from flaskapp.core.cache import insert_into_cache
+from flaskapp.core.cache import insert_into_cache,check_action
 
 gitcommit = os.getenv("GITHUB_SHA")
 
@@ -76,6 +76,6 @@ def evaluate_action():
     datahora=request.json.get("_source").get("datahora")
 
     print(nummecanografico,resultado,localpicagem,datahora)
-    result=insert_into_cache(conn,nummecanografico,resultado,localpicagem,datahora)
+    result=check_action(conn,nummecanografico,resultado,localpicagem,datahora)
    # result = makesearch(conn, terms, max_nr)
     return jsonify(result)
