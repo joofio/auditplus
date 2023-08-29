@@ -9,7 +9,7 @@ if not app.debug:
     if not os.path.exists("logs"):
         os.mkdir("logs")
     file_handler = RotatingFileHandler(
-        "logs/bibliovigilance.log", maxBytes=10240 * 1024, backupCount=10
+        "logs/auditplus.log", maxBytes=10240 * 1024, backupCount=10
     )
     file_handler.setFormatter(
         logging.Formatter(
@@ -24,4 +24,4 @@ if not app.debug:
 
 if __name__ == "__main__":
     #print("runnn")
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(debug=True, host="0.0.0.0", port=5005)

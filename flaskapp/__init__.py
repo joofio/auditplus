@@ -22,16 +22,16 @@ app.config["SWAGGER"] = {
     "uiversion": 3,
     "swagger": "2.0",
     "info": {
-        "title": "bibliovigilance",
-        "description": "bibliovigilance API",
+        "title": "Audit+",
+        "description": "Audit+ API",
         "contact": {
-            "responsibleOrganization": "Vigilance",
+            "responsibleOrganization": "Audit+",
             "responsibleDeveloper": "Joao Almeida",
         },
         "termsOfService": "http://me.com/terms",
         "version": "0.0.1",
     },
-    "host": "http://bibliovigilancia.gim.med.up.pt/",  # overrides localhost:5000
+   # "host": "http://bibliovigilancia.gim.med.up.pt/",  # overrides localhost:5000
     "basePath": "api",  # base bash for blueprint registration
     "schemes": ["http", "https"],
 }
@@ -40,18 +40,6 @@ swagger = Swagger(app, template=app.config["SWAGGER"])
 SQLALCHEMY_DATABASE_URI = f"postgresql://{user}:{password}@{host}:{port}/{database}"
 
 # Enter here your database informations
-app.config[
-    "SQLALCHEMY_DATABASE_URI"
-] = SQLALCHEMY_DATABASE_URI  # makes not sense. check it later
-#app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  # makes not sense. check it later
-#app.config["PROPAGATE_EXCEPTIONS"] = True
-#app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
-#    "pool_recycle": 300,
-#    "pool_pre_ping": True,
-#}
-#app.config["SQLALCHEMY_POOL_RECYCLE"] = 300
-
-
-#db = SQLAlchemy(app)
+app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI  # makes not sense. check it later
 
 import flaskapp.views

@@ -42,8 +42,8 @@ def check_action(conn,nummecsonho,ADLOCPC_2,ADLOCPC_4,desunidade,dataaccao):
     result = conn.execute(sql, {"nummecsonho":nummecsonho,"dataaccao":dataaccao}).fetchall()
   #  print(result)
     if len(result)==0:
-        print("eeeee")
-        return "ERROR,sem registo"
+        #print("eeeee")
+        return "sem registo"
     elif len(result)>1:
         #print(result)
         return "ERROR, more than one record"
@@ -54,7 +54,7 @@ def check_action(conn,nummecsonho,ADLOCPC_2,ADLOCPC_4,desunidade,dataaccao):
         if result_local=="ok":
             return "ok"
         else:
-            return "ERROR,local errado"
+            return "local errado"
     else:
        # print(result is None)
        # print(len(result))
