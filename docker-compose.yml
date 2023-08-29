@@ -2,7 +2,7 @@
 version: '3.1'
 
 services:
-  biblio_app:
+  audit_app:
       image: jfcal/auditplus
       restart: always
       environment:

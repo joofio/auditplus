@@ -71,3 +71,7 @@ def check_match_picagem(localpicagem,ADLOCPC_4):
         return "ok"
     else:
         return "ERROR"
+    
+
+def truncate_date():
+    pass
