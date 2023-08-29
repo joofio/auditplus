@@ -3,3 +3,6 @@ Flask==2.3.2
 Flask_HTTPAuth==4.8.0
 python-dotenv==1.0.0
 SQLAlchemy==2.0.16
+gunicorn
+scikit_learn
+psycopg2-binary
