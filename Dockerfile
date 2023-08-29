@@ -36,7 +36,7 @@ COPY flaskapp /app/flaskapp
 COPY requirements.txt /app
 COPY run.py /app
 COPY gunicorn.sh /app
-COPY dump.sql /app
+COPY init.sql /app
 
 RUN apt-get update -y
 #RUN apt-get install -y libmariadb-dev
