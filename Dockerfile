@@ -29,7 +29,7 @@ RUN echo $MARIADB_DB
 RUN echo $MARIADB_PORT
 
 RUN apt-get update -y
-RUN apt-get install zip 
+RUN apt-get install zip -y
 
 RUN mkdir /app
 RUN mkdir /app/flaskapp
