@@ -1,4 +1,12 @@
 from sqlalchemy.sql import text
+import joblib
+import pandas as pd
+
+enc_filename="encoder.sav"
+enc = joblib.load(enc_filename)
+
+model_filename="outlier_model.sav"
+loaded_model = joblib.load(model_filename)
 
 def insert_into_cache(conn,nummecanografico,resultado,localpicagem,datahora):
 
@@ -49,7 +57,7 @@ def check_action(conn,nummecsonho,ADLOCPC_2,ADLOCPC_4,desunidade,dataaccao):
   #  print(result)
     if len(result)==0:
         #print("eeeee")
-        return "sem registo"
+        return "Alerta: sem registo de entrada"
     elif len(result)>1:
         #print(result)
         return "ERROR, more than one record"
@@ -82,3 +90,33 @@ def check_match_picagem(localpicagem,ADLOCPC_4):
 
 def truncate_date():
     pass
+
+
+def outlier_check(row):
+
+    out_cols=['_source.numfuncionario', '_source.Caminhofunc:0',
+       '_source.Caminhofunc:4', '_source.datafim', '_source.desunidade',
+       '_source.ADLOCPC:1', '_source.adtipofuncionario', '_source.mudulo',
+       '_source.descaplicacao', '_source.codacesso', '_source.Caminhofunc:5',
+       '_source.ADLOCPC:4', '_source.dnsname', '_source.ADLOCPC:5',
+       '_source.nomefuncsonho', '_source.ADLOCPC:0', '_source.nummecsonho',
+       '_source.addepfuncionario', '_source.ADLOCPC:2', '_source.dataaccao',
+       '_source.Caminhofunc:1', '_source.codintituicao',
+       '_source.nomeaplicacao', '_source.desaplicacao',
+       '_source.desgrupofuncsonho', '_source.activosonho',
+       '_source.ipcomputador', '_source.ADLOCPC:3', '_source.ADLOCPC:6',
+       '_source.codgrupofuncsonho', '_source.Caminhofunc:2',
+       '_source.Caminhofunc:3', '_source.adestadofuncionario',
+       '_source.ADLOCPC:7', '_source.ADLOCPC:8', '_source.Caminhofunc:6',
+       '_source.ADLOCPC:9', '_source.ADLOCPC:10']
+    #print(row)
+    #row_df=pd.DataFrame(row)
+    #print(row_df)
+    df =pd.json_normalize([row])
+    print(df)
+    X=enc.transform(df[out_cols])
+    dect=loaded_model.predict(X)
+    if dect==[0]:
+        return "ok"
+    else:
+        return "Warning: outlier"

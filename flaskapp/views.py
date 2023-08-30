@@ -3,7 +3,7 @@ import os
 from flask import jsonify, request, session,render_template
 from sqlalchemy import create_engine
 from flaskapp import app, auth
-from flaskapp.core.cache import insert_into_cache,check_action
+from flaskapp.core.cache import insert_into_cache,check_action,outlier_check
 
 
 gitcommit = os.getenv("GITHUB_SHA")
@@ -71,6 +71,12 @@ def evaluate_action():
 
     print(nummecsonho,ADLOCPC_2,ADLOCPC_4,desunidade,dataaccao)
     result=check_action(conn,nummecsonho,ADLOCPC_2,ADLOCPC_4,desunidade,dataaccao)
-   # result = makesearch(conn, terms, max_nr)
     print(result)
-    return jsonify(result)
+
+    result2=outlier_check(request.json)
+   # result = makesearch(conn, terms, max_nr)
+    print(result2)
+
+    outcome={"rule1":result,"rule2":result2}
+    print(outcome)
+    return jsonify(outcome)

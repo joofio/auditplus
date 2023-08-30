@@ -37,6 +37,9 @@ COPY requirements.txt /app
 COPY run.py /app
 COPY gunicorn.sh /app
 COPY init.sql /app
+COPY *.zip /app
+
+COPY *.sav /app
 
 RUN apt-get update -y
 #RUN apt-get install -y libmariadb-dev
@@ -44,7 +47,7 @@ RUN apt-get update -y
 
 WORKDIR /app
 RUN pip install -r requirements.txt
-
+RUN unzip model.zip 
 
 EXPOSE 5000
 #CMD python run.py
