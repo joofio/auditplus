@@ -1,12 +1,27 @@
 from sqlalchemy.sql import text
 import joblib
 import pandas as pd
+from datetime import datetime
 
 enc_filename="encoder.sav"
 enc = joblib.load(enc_filename)
 
 model_filename="outlier_model.sav"
 loaded_model = joblib.load(model_filename)
+
+def create_date_elements(x):
+   # print(x)
+    data=x["_source.dataaccao"]
+    dt=datetime.strptime(data, '%Y-%m-%dT%H:%M:%S.000Z')
+    return dt.year, dt.month, dt.day, dt.hour,dt.minute,dt.second,dt.weekday()
+
+def create_is_weekday(x):
+    if x["dtac_weekday"]<5:
+        return 1
+    else:
+        return 0
+
+
 
 def insert_into_cache(conn,nummecanografico,resultado,localpicagem,datahora):
 
@@ -95,12 +110,11 @@ def truncate_date():
 def outlier_check(row):
 
     out_cols=['_source.numfuncionario', '_source.Caminhofunc:0',
-       '_source.Caminhofunc:4', '_source.datafim', '_source.desunidade',
-       '_source.ADLOCPC:1', '_source.adtipofuncionario', '_source.mudulo',
-       '_source.descaplicacao', '_source.codacesso', '_source.Caminhofunc:5',
-       '_source.ADLOCPC:4', '_source.dnsname', '_source.ADLOCPC:5',
-       '_source.nomefuncsonho', '_source.ADLOCPC:0', '_source.nummecsonho',
-       '_source.addepfuncionario', '_source.ADLOCPC:2', '_source.dataaccao',
+       '_source.Caminhofunc:4', '_source.desunidade', '_source.ADLOCPC:1',
+       '_source.adtipofuncionario', '_source.mudulo', '_source.descaplicacao',
+       '_source.codacesso', '_source.Caminhofunc:5', '_source.ADLOCPC:4',
+       '_source.dnsname', '_source.ADLOCPC:5', '_source.ADLOCPC:0',
+       '_source.nummecsonho', '_source.addepfuncionario', '_source.ADLOCPC:2',
        '_source.Caminhofunc:1', '_source.codintituicao',
        '_source.nomeaplicacao', '_source.desaplicacao',
        '_source.desgrupofuncsonho', '_source.activosonho',
@@ -108,12 +122,16 @@ def outlier_check(row):
        '_source.codgrupofuncsonho', '_source.Caminhofunc:2',
        '_source.Caminhofunc:3', '_source.adestadofuncionario',
        '_source.ADLOCPC:7', '_source.ADLOCPC:8', '_source.Caminhofunc:6',
-       '_source.ADLOCPC:9', '_source.ADLOCPC:10']
+       '_source.ADLOCPC:9', '_source.ADLOCPC:10', 'dtac_year', 'dtac_month',
+       'dtac_day', 'dtac_hour', 'dtac_minute', 'dtac_second', 'dtac_weekday',
+       'isweekday']
     #print(row)
     #row_df=pd.DataFrame(row)
     #print(row_df)
     df =pd.json_normalize([row])
     print(df)
+    df[["dtac_year","dtac_month","dtac_day","dtac_hour","dtac_minute","dtac_second","dtac_weekday"]]=df.apply(create_date_elements,axis=1,result_type="expand")
+    df["isweekday"]=df.apply(create_is_weekday,axis=1)
     X=enc.transform(df[out_cols])
     dect=loaded_model.predict(X)
     if dect==[0]:
