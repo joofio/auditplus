@@ -28,7 +28,7 @@ RUN echo $MARIADB_HOST
 RUN echo $MARIADB_DB
 RUN echo $MARIADB_PORT
 
-
+RUN apt-get install zip unzip
 RUN mkdir /app
 RUN mkdir /app/flaskapp
 COPY flaskapp /app/flaskapp
