@@ -50,7 +50,7 @@ def insert_into_cache(conn,nummecanografico,resultado,localpicagem,datahora):
               DATE_PART('hour', :datahora ::timestamp - hora_entrada::timestamp) between 1 and 24""")
              
             conn.execute(sql,
-        {"datahora":datahora,"nummecanografico":nummecanografico,"localpicagem":localpicagem,"datahora":datahora}
+        {"datahora":datahora,"nummecanografico":nummecanografico,"localpicagem":localpicagem}
     )
     else:
         conn.execute(

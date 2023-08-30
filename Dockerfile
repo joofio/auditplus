@@ -28,7 +28,9 @@ RUN echo $MARIADB_HOST
 RUN echo $MARIADB_DB
 RUN echo $MARIADB_PORT
 
+RUN apt-get update -y
 RUN apt-get install zip 
+
 RUN mkdir /app
 RUN mkdir /app/flaskapp
 COPY flaskapp /app/flaskapp
@@ -41,7 +43,6 @@ COPY *.zip /app
 
 COPY *.sav /app
 
-RUN apt-get update -y
 #RUN apt-get install -y libmariadb-dev
 #RUN apt-get install -y gcc
 
