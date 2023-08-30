@@ -1,6 +1,6 @@
 import os
 
-from flask import jsonify, request, session
+from flask import jsonify, request, session,render_template
 from sqlalchemy import create_engine
 from flaskapp import app, auth
 from flaskapp.core.cache import insert_into_cache,check_action
@@ -21,7 +21,7 @@ conn = engine.connect()
 
 @app.route("/", methods=["GET"])
 def hello():
-    return "hello world"
+    return render_template("index.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

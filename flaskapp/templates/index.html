@@ -5,108 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/marking.css') }}">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/datatables.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 
 </head>
 
 <body class="d-flex flex-column min-vh-100">
-    <!-- Image and text -->
-    <nav class="navbar navbar-dark bg-dark">
-        <!-- Navbar content -->
-        <a class="navbar-brand" href="/">
-
-            Bibliovigilance &beta;
-        </a>
-    </nav>
-
-    <br>
     <div class="container">
-        <h3>Type one or more keywords in the searchbox below. <br> The system will search for papers that contain all of
-            them.
-        </h3>
-        <form class="mb-3" method="post" action="" style="margin:auto">
+  <h1>Audit+</h1>
+  <p>Regras aplicadas</p>
 
-            <div class="col-5">
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="ontologyButton" name="ontology" checked>
-                    <label class="form-check-label" for="ontologyButton">Search Ontologies Only</label>
-                </div>
-
-                <select class="js-data-example-ajax" id="id_label_single" style="width: 200%" multiple="multiple"
-                    name="searchterms[]"></select>
-            </div>
-
-            <div class="col-2">
-                <br>
-                <button type="submit" class="btn btn-primary" data-toggle="tooltip" data-placement="left"
-                    title="Type an active principle and/or drug reaction">Search</button>
-
-            </div>
-        </form>
-
-    </div>
-
-    <br>
-    <div class="container-fluid">
-        <h4> {{result_string|safe}} </h4>
-
-        {% if data %}
-
-        <table id="Maintable" class="display" style="width:100%">
-            <!-- Table headers -->
-
-            <thead>
-                <tr>
-                    <td scope="col">Nrº</td>
-                    <td scope="col">Title</td>
-                    <td scope="col">Year</td>
-                    <td scope="col">Summary</td>
-                    <td scope="col">Decision</td>
-
-                </tr>
-            </thead>
-            <tbody>
-                <!-- For loop logic of jinja template -->
-                {%for element in data%}
-
-                <!-- table rows -->
-                <tr>
-                    <td scope="row">{{loop.index}}</td>
-                    <td scope="row"><a href={{element[2]}}> {{element[0]}}</a></td>
-                    <td scope="row">{{element[3]}}</td>
-                    <td scope="row">
-                        <div class="entities">{{element[1]|safe}}</div>
-                    </td>
-                    <td scope="row">
-                        <div class="btn-group" role="group" aria-label="Basic example"> <button type="button"
-                                class="btn btn-success" onclick="createresult({{element[4]}},{{query_id}},1)">O</button>
-                            <button type="button" class="btn btn-danger"
-                                onclick="createresult({{element[4]}},{{query_id}},0)">X</button>
-                        </div>
-                    </td>
-
-
-                    {%endfor%}
-
-                </tr>
-            </tbody>
-        </table>
-        {% endif %}
-
-    </div>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Titulo</th>
+      <th>Descrição</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Entrada e saída </td>
+      <td>Se uma acção do Sclinico for executada sem uma entrada anterior na mesma instituição do lado do sisqual</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Outlier</td>
+      <td>Modelo machine learning que caracteriza os outliers nos dados sclinico</td>
+    </tr>
+  </table>
+</div>
 
 </body>
 {% block footer %}
@@ -119,11 +50,11 @@
                     <h3>Objective</h3>
 
                     <p>
-                        Support pharmacovigilance teams getting information about ADR faster and accurately. </p>
+                        Audit Messages </p>
                 </div>
                 <div class="col-md-4 col-lg-4 offset-lg-1 footer-contact wow fadeInDown">
                     <h3>Contact</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> CFN @ FMUP, Portugal</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Audit+</p>
                     <p><i class="fas fa-envelope"></i> Email: <a href="mailto:hello@domain.com">hello@domain.com</a></p>
                 </div>
                 <div class="col-md-4 col-lg-3 footer-social wow fadeInUp">
