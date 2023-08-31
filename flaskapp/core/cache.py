@@ -9,6 +9,9 @@ enc = joblib.load(enc_filename)
 model_filename="outlier_model.sav"
 loaded_model = joblib.load(model_filename)
 
+if_filename="isolation_model.sav"
+if_model = joblib.load(if_filename)
+
 def create_date_elements(x):
    # print(x)
     data=x["_source.dataaccao"]
@@ -83,7 +86,7 @@ def check_action(conn,nummecsonho,ADLOCPC_2,ADLOCPC_4,desunidade,dataaccao):
         if result_local=="ok":
             return "ok"
         else:
-            return "local errado"
+            return "Alerta: Local diferente registado na entrada"
     else:
        # print(result is None)
        # print(len(result))
@@ -134,7 +137,10 @@ def outlier_check(row):
     df["isweekday"]=df.apply(create_is_weekday,axis=1)
     X=enc.transform(df[out_cols])
     dect=loaded_model.predict(X)
-    if dect==[0]:
+    ifpred=if_model.predict(X)
+    if dect==[0] and ifpred==1:
         return "ok"
-    else:
-        return "Warning: outlier"
+    elif dect==[1] or ifpred==-1: #um apenas
+        return "Aviso: Possivel outlier"
+    else: 
+        return "Alerta: Outlier"

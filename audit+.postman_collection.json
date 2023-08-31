@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "2e2ecba0-4f8e-4fe7-9399-08552c3bbc40",
+		"name": "audit+",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4210861"
+	},
+	"item": [
+		{
+			"name": "fill data",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"_index\": \"sisqual-2023.04.28-000001\", \"_type\": \"doc\", \"_id\": \"B2_HyIcB7PZ7wWgD7WEn\", \"_score\": 1.0, \"_source\": {\"importado\": \"0\", \"nummecanografico\": 18253, \"dataregisto\": \"2023-01-15T00:00:00.000Z\", \"hsregister.process_time\": \"2023-04-28T16:52:38.305Z\", \"hsregister.receive_time\": \"2023-04-28T16:10:02.134Z\", \"type\": \"sisqual\", \"dataultalteracao\": \"2023-01-15T08:33:06.757Z\", \"@version\": \"1\", \"@timestamp\": \"2023-04-28T16:10:02.125Z\", \"resultado\": \"S\", \"codterminal\": 13, \"localpicagem\": \"AVEIRO\", \"tiporegisto\": \"P\", \"datahora\": \"2023-01-17T09:08:00.000Z\", \"classificacao\": 0}}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5005/api/v1/filldata",
+					"host": [
+						"localhost"
+					],
+					"port": "5005",
+					"path": [
+						"api",
+						"v1",
+						"filldata"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_index\": \"sclinico-2023.05.24-000001\",\n    \"_type\": \"doc\",\n    \"_id\": \"GlEuTogBmMmn1VMmpHzu\",\n    \"_score\": 1.0,\n    \"_source\": {\n        \"numfuncionario\": \"1411\",\n        \"Caminhofunc:0\": \"CN=18253\",\n        \"Caminhofunc:4\": \"DC=min-saude\",\n        \"datafim\": null,\n        \"desunidade\": \"HD DE AVEIRO\",\n        \"adlocalizacaopc\": \"LDAP://chbv.min-saude.pt/CN=D11115,OU=Anestesiologia,OU=Bloco 07,OU=Hospital Aveiro,OU=CHBV Computadores,DC=chbv,DC=min-saude,DC=pt\",\n        \"ADLOCPC:1\": \"Anestesiologia\",\n        \"adtipofuncionario\": \"Assistente Hosp\",\n        \"mudulo\": null,\n        \"hsregister.receive_time\": \"2023-05-24T14:34:13.160Z\",\n        \"adcaminhofuncionario\": \"CN=18253,OU=Anestesiologia,OU=CHBV Funcionarios,DC=chbv,DC=min-saude,DC=pt\",\n        \"descaplicacao\": null,\n        \"codacesso\": \"1\",\n        \"Caminhofunc:5\": \"DC=pt\",\n        \"ADLOCPC:4\": \"CHBV Computadores\",\n        \"dnsname\": \"D11115\",\n        \"ADLOCPC:5\": \"DC=chbv\",\n        \"nomefuncsonho\": \"INES RANGEL VALDOLEIROS\",\n        \"ADLOCPC:0\": \"chbv.min-saude.pt/CN=D11115\",\n        \"nummecsonho\": 18253,\n        \"addepfuncionario\": \"Anestesiologia\",\n        \"ADLOCPC:2\": \"Bloco 07\",\n        \"@version\": \"1\",\n        \"dataaccao\": \"2023-01-17T08:45:34.000Z\",\n        \"type\": \"sclinico\",\n        \"Caminhofunc:1\": \"OU=Anestesiologia\",\n        \"codintituicao\": \"2017103\",\n        \"nomeaplicacao\": null,\n        \"desaplicacao\": \"ACSS - Acesso ao processo Clinico a partir do SAM\",\n        \"desgrupofuncsonho\": \"MEDICO\",\n        \"tratado\": 0,\n        \"@timestamp\": \"2023-05-24T14:34:12.946Z\",\n        \"activosonho\": \"S\",\n        \"ipcomputador\": \"192.168.9.202\",\n        \"hsregister.process_time\": \"2023-05-24T14:34:19.740Z\",\n        \"ADLOCPC:3\": \"Hospital Aveiro\",\n        \"ADLOCPC:6\": \"DC=min-saude\",\n        \"codgrupofuncsonho\": 5,\n        \"Caminhofunc:2\": \"OU=CHBV Funcionarios\",\n        \"Caminhofunc:3\": \"DC=chbv\",\n        \"adestadofuncionario\": \"512 - Ready for logon\",\n        \"ADLOCPC:7\": \"DC=pt\",\n        \"ADLOCPC:8\":null,\n        \"Caminhofunc:6\":null,\n        \"ADLOCPC:9\":null,\n        \"ADLOCPC:10\":null\n\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5005/api/v1/evaluate_action",
+					"host": [
+						"localhost"
+					],
+					"port": "5005",
+					"path": [
+						"api",
+						"v1",
+						"evaluate_action"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
