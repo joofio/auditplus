@@ -31,6 +31,7 @@ RUN echo $MARIADB_PORT
 RUN apt-get update -y
 RUN apt-get install zip -y
 #RUN apt-get install llvm-7 -y
+RUN apt-get -y install llvm-10*
 
 RUN mkdir /app
 RUN mkdir /app/flaskapp
