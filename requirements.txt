@@ -51,7 +51,7 @@ matplotlib==3.7.2
     # via pyod
 mistune==2.0.5
     # via flasgger
-numba==0.57.1
+numba==0.56.4
     # via pyod
 numpy==1.25.2
     # via
