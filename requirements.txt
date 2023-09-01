@@ -40,7 +40,9 @@ jsonschema==4.17.3
 kiwisolver==1.4.5
     # via matplotlib
 llvmlite==0.34.0
-    # via numba
+    # via
+    #   -r requirements.in
+    #   numba
 markupsafe==2.1.2
     # via
     #   jinja2

@@ -7,4 +7,5 @@ gunicorn
 scikit_learn
 psycopg2-binary
 pandas
+llvmlite
 pyod
