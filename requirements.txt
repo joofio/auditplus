@@ -55,6 +55,7 @@ numba==0.51.2
     # via pyod
 numpy==1.25.2
     # via
+    #   -r requirements.in
     #   contourpy
     #   matplotlib
     #   numba
