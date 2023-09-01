@@ -39,7 +39,7 @@ jsonschema==4.17.3
     # via flasgger
 kiwisolver==1.4.5
     # via matplotlib
-llvmlite==0.34.0
+llvmlite==0.38.0
     # via
     #   -r requirements.in
     #   numba
