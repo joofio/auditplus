@@ -39,7 +39,7 @@ jsonschema==4.17.3
     # via flasgger
 kiwisolver==1.4.5
     # via matplotlib
-llvmlite==0.38.0
+llvmlite==0.40.1
     # via
     #   -r requirements.in
     #   numba
@@ -51,9 +51,9 @@ matplotlib==3.7.2
     # via pyod
 mistune==2.0.5
     # via flasgger
-numba==0.55.2
+numba==0.57.1
     # via pyod
-numpy==1.25.2
+numpy==1.23.5
     # via
     #   -r requirements.in
     #   contourpy
