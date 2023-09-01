@@ -37,18 +37,25 @@ mistune==2.0.5
     # via flasgger
 numpy==1.25.2
     # via
+    #   pandas
     #   scikit-learn
     #   scipy
 packaging==23.1
     # via
     #   flasgger
     #   gunicorn
+pandas==2.1.0
+    # via -r requirements.in
 psycopg2-binary==2.9.7
     # via -r requirements.in
 pyrsistent==0.19.3
     # via jsonschema
+python-dateutil==2.8.2
+    # via pandas
 python-dotenv==1.0.0
     # via -r requirements.in
+pytz==2023.3
+    # via pandas
 pyyaml==6.0
     # via flasgger
 scikit-learn==1.3.0
@@ -56,12 +63,16 @@ scikit-learn==1.3.0
 scipy==1.11.2
     # via scikit-learn
 six==1.16.0
-    # via flasgger
+    # via
+    #   flasgger
+    #   python-dateutil
 sqlalchemy==2.0.16
     # via -r requirements.in
 threadpoolctl==3.2.0
     # via scikit-learn
 typing-extensions==4.5.0
     # via sqlalchemy
+tzdata==2023.3
+    # via pandas
 werkzeug==2.3.7
     # via flask
