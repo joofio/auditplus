@@ -30,14 +30,14 @@ RUN echo $MARIADB_PORT
 
 RUN apt-get update -y
 RUN apt-get install zip -y
-RUN apt-get install llvm-7 -y
+#RUN apt-get install llvm-7 -y
 
 RUN mkdir /app
 RUN mkdir /app/flaskapp
 COPY flaskapp /app/flaskapp
 
 RUN python3 -m pip install pip --upgrade
-
+RUN python3 -m pip install --upgrade wheel setuptools
 
 COPY requirements.txt /app
 COPY run.py /app
