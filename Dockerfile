@@ -35,6 +35,9 @@ RUN mkdir /app
 RUN mkdir /app/flaskapp
 COPY flaskapp /app/flaskapp
 
+RUN python3 -m pip install pip --upgrade
+
+
 COPY requirements.txt /app
 COPY run.py /app
 COPY gunicorn.sh /app
