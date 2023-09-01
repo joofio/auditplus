@@ -36,7 +36,7 @@ RUN mkdir /app/flaskapp
 COPY flaskapp /app/flaskapp
 
 RUN python3 -m pip install pip --upgrade
-RUN  apt install llvm-8
+RUN  apt install llvm-7
 
 
 COPY requirements.txt /app
