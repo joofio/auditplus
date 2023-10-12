@@ -16,11 +16,6 @@ database = os.getenv("DB_NAME")
 port = os.getenv("DB_PORT")
 
 
-user="postgres"
-password="123456"
-host="127.0.0.1"
-port="5432"
-database="auditcache"
 
 print("********" * 20, user, password, host, database, port)
 
