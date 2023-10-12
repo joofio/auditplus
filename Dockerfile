@@ -1,32 +1,7 @@
 #FROM python:3.9-slim-buster
 #FROM ubuntu:18.04
 FROM python:3.10-slim
-ARG GITHUB_SHA=dev
-ARG MARIADB_USER= api
-ARG MARIADB_PASSWORD=ZSCO1wtnkwU9fBsa5/fS
-ARG MARIADB_HOST=127.0.0.1
-ARG MARIADB_PORT=3306
-ARG MARIADB_DB=repository
 
-RUN echo $MARIADB_USER
-RUN echo $MARIADB_PASSWORD
-RUN echo $MARIADB_HOST
-RUN echo $MARIADB_DB
-RUN echo $MARIADB_PORT
-RUN echo $GITHUB_SHA
-
-ENV MARIADB_USER=$MARIADB_USER
-ENV MARIADB_PASSWORD=$MARIADB_PASSWORD
-ENV MARIADB_HOST=$MARIADB_HOST
-ENV MARIADB_PORT=$MARIADB_PORT
-ENV MARIADB_DB=$MARIADB_DB
-ENV GITHUB_SHA=$GITHUB_SHA
-
-RUN echo $MARIADB_USER
-RUN echo $MARIADB_PASSWORD
-RUN echo $MARIADB_HOST
-RUN echo $MARIADB_DB
-RUN echo $MARIADB_PORT
 
 RUN apt-get update -y
 RUN apt-get install zip -y
@@ -46,12 +21,13 @@ COPY gunicorn.sh /app
 COPY init.sql /app
 COPY *.zip /app
 
-COPY *.sav /app
 
 #RUN apt-get install -y libmariadb-dev
 #RUN apt-get install -y gcc
 
 WORKDIR /app
+RUN wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1fVjqg2tgdvB0LNHmIdpkHoQidq9sZ1oP' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1fVjqg2tgdvB0LNHmIdpkHoQidq9sZ1oP" -O outlier_model.sav && rm -rf /tmp/cookies.txt
+
 RUN pip install -r requirements.txt
 RUN unzip model.zip 
 
