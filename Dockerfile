@@ -21,6 +21,7 @@ COPY run.py /app
 COPY gunicorn.sh /app
 COPY init.sql /app
 COPY *.zip /app
+COPY *.sav /app
 
 
 #RUN apt-get install -y libmariadb-dev
@@ -30,7 +31,7 @@ WORKDIR /app
 RUN wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=download&confirm=$(wget --quiet --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate 'https://docs.google.com/uc?export=download&id=1fVjqg2tgdvB0LNHmIdpkHoQidq9sZ1oP' -O- | sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1fVjqg2tgdvB0LNHmIdpkHoQidq9sZ1oP" -O outlier_model.sav && rm -rf /tmp/cookies.txt
 
 RUN pip install -r requirements.txt
-RUN unzip model.zip 
+#RUN unzip model.zip 
 
 EXPOSE 5000
 #CMD python run.py
