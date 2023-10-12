@@ -5,6 +5,7 @@ FROM python:3.10-slim
 
 RUN apt-get update -y
 RUN apt-get install zip -y
+RUN apt-get install wget -y
 #RUN apt-get install llvm-7 -y
 #RUN apt-get -y install llvm-11*
 
