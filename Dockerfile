@@ -33,7 +33,7 @@ RUN wget --load-cookies /tmp/cookies.txt "https://docs.google.com/uc?export=down
 RUN pip install -r requirements.txt
 #RUN unzip model.zip 
 
-EXPOSE 5000
+EXPOSE 5005
 #CMD python run.py
 RUN ["chmod", "+x", "./gunicorn.sh"]
 
